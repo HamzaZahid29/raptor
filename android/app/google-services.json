@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "454808577764",
+    "project_id": "raptor-12312",
+    "storage_bucket": "raptor-12312.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:454808577764:android:d1127b18d7d5e44e722ef1",
+        "android_client_info": {
+          "package_name": "com.example.raptor"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGTumBXEeT-25ceO0jltuk8s7OMbqKdF0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
