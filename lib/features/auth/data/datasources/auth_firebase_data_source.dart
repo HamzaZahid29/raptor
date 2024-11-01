@@ -4,6 +4,7 @@ abstract interface class AuthFirebaseDataSource {
   Future<String> signUpWithEmailPassword({
     required String email,
     required String password,
+    required String name,
   });
 
   Future<String> loginWithEmailPassword({
@@ -25,10 +26,14 @@ class AuthFirebaseDataSourceImpl extends AuthFirebaseDataSource {
 
   @override
   Future<String> signUpWithEmailPassword(
-      {required String email, required String password}) async {
+      { required String email,
+        required String password,
+        required String name,}) async {
     try {
       await firebaseAuth.createUserWithEmailAndPassword(
-          email: email, password: password);
+          email: email, password: password).then((value) async{
+         await firebaseAuth.currentUser?.updateDisplayName(name);
+      });
       return firebaseAuth.currentUser?.uid ?? '';
     } catch (e) {
 

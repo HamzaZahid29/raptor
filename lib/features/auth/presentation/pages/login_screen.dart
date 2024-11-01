@@ -43,7 +43,9 @@ class LoginScreen extends StatelessWidget {
                       controller: emailController,
                       decoration: InputDecoration(labelText: 'Email'),
                     ),
-                    SizedBox(height: 10,),
+                    SizedBox(
+                      height: 10,
+                    ),
                     TextField(
                       controller: passwordController,
                       decoration: InputDecoration(labelText: 'Password'),
@@ -57,17 +59,24 @@ class LoginScreen extends StatelessWidget {
                           return CircularProgressIndicator();
                         }
 
-                        return ElevatedButton(
-                          onPressed: () {
-                            // Dispatch login event
-                            context.read<AuthBloc>().add(
-                              AuthLoginRequested(
-                                emailController.text,
-                                passwordController.text,
+                        return Row(
+                          children: [
+                            Expanded(
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  // Dispatch login event
+                                  context.read<AuthBloc>().add(
+                                        AuthLoginRequested(
+                                          emailController.text,
+                                          passwordController.text,
+                                        ),
+                                      );
+                                },
+                                child: Text('Login',
+                                    style: AppTextStyles.labelLarge),
                               ),
-                            );
-                          },
-                          child: Text('Login', style: AppTextStyles.labelLarge),
+                            ),
+                          ],
                         );
                       },
                     ),
