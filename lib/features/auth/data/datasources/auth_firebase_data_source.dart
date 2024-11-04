@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:raptor/core/errors/exceptions.dart';
 
 abstract interface class AuthFirebaseDataSource {
   Future<String> signUpWithEmailPassword({
@@ -34,9 +35,12 @@ class AuthFirebaseDataSourceImpl extends AuthFirebaseDataSource {
           email: email, password: password).then((value) async{
          await firebaseAuth.currentUser?.updateDisplayName(name);
       });
+      if(firebaseAuth.currentUser == null){
+        throw ServerException('User is null');
+      }
       return firebaseAuth.currentUser?.uid ?? '';
     } catch (e) {
-
+      throw ServerException(e.toString());
       return '';
     }
   }
