@@ -20,3 +20,5 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
   }
 }
+
+// TODO:  test this properly
