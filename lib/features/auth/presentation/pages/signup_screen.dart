@@ -46,7 +46,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   label: 'Username',
                   formFieldValidator: TextFieldValidators.userNameValidator,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 AuthTextFormField(
@@ -54,7 +54,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   label: 'Email',
                   formFieldValidator: TextFieldValidators.emailValidator,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 AuthTextFormField(
