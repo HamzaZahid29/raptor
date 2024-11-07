@@ -9,23 +9,18 @@ import 'package:raptor/features/auth/presentation/blocs/auth_bloc.dart';
 import 'core/router/app_router.dart';
 import 'core/theme/theme.dart';
 import 'firebase_options.dart';
+import 'init_dependencies.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  await initDependencies();
   runApp(MultiBlocProvider(
     providers: [
       BlocProvider(
-        create: (_) => AuthBloc(
-          userSignUp: UserSignUp(
-            AuthRepositoryImpl(
-              AuthFirebaseDataSourceImpl(firebaseAuth),
-            ),
-          ),
-        ),
+        create: (_) => serviceLocator<AuthBloc>(),
       ),
     ],
     child: MyApp(),
