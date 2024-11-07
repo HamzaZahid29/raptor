@@ -6,4 +6,5 @@ class Routes {
   static const String profilePage = 'profile';
   static const String nestedProfilePage = '/settings/profile';
   static const String loginScreen = '/login';
+  static const String signupScreen = '/signup';
 }

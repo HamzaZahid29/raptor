@@ -42,7 +42,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 AuthTextFormField(
-                  textEditingController: passwordController,
+                  textEditingController: userNameController,
                   label: 'Username',
                   formFieldValidator: TextFieldValidators.userNameValidator,
                 ),
@@ -50,7 +50,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   height: 10,
                 ),
                 AuthTextFormField(
-                  textEditingController: passwordController,
+                  textEditingController: emailController,
                   label: 'Email',
                   formFieldValidator: TextFieldValidators.emailValidator,
                 ),
@@ -69,14 +69,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     if (state is AuthLoading) {
                       return CircularProgressIndicator();
                     }
-
                     return Row(
                       children: [
                         Expanded(
                           child: ElevatedButton(
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
-                                context.read<AuthBloc>().add(AuthSignUp(email: emailController.text.trim(), password: passwordController.text.trim(), name: userNameController.text.trim()));
+                                context.read<AuthBloc>().add(AuthSignUp(
+                                    email: emailController.text.trim(),
+                                    password: passwordController.text.trim(),
+                                    name: userNameController.text.trim()));
                               }
                             },
                             child:
