@@ -1,14 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:raptor/core/errors/exceptions.dart';
+import 'package:raptor/features/auth/data/models/user_model.dart';
 
 abstract interface class AuthFirebaseDataSource {
-  Future<String> signUpWithEmailPassword({
+  Future<UserModel> signUpWithEmailPassword({
     required String email,
     required String password,
     required String name,
   });
 
-  Future<String> loginWithEmailPassword({
+  Future<UserModel> loginWithEmailPassword({
     required String email,
     required String password,
   });
@@ -20,13 +21,13 @@ class AuthFirebaseDataSourceImpl extends AuthFirebaseDataSource {
   AuthFirebaseDataSourceImpl(this.firebaseAuth);
 
   @override
-  Future<String> loginWithEmailPassword(
+  Future<UserModel> loginWithEmailPassword(
       {required String email, required String password}) async {
     throw UnimplementedError();
   }
 
   @override
-  Future<String> signUpWithEmailPassword(
+  Future<UserModel> signUpWithEmailPassword(
       { required String email,
         required String password,
         required String name,}) async {
@@ -38,10 +39,9 @@ class AuthFirebaseDataSourceImpl extends AuthFirebaseDataSource {
       if(firebaseAuth.currentUser == null){
         throw ServerException('User is null');
       }
-      return firebaseAuth.currentUser?.uid ?? '';
+      return UserModel(firebaseAuth.currentUser?.uid ?? '',firebaseAuth.currentUser?.email ?? '', firebaseAuth.currentUser?.displayName ?? '');
     } catch (e) {
       throw ServerException(e.toString());
-      return '';
     }
   }
 }
