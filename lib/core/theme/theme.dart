@@ -37,7 +37,7 @@ class AppThemes {
     ),
     inputDecorationTheme: InputDecorationTheme(
       focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: primaryColor),
+        borderSide: BorderSide(color: primaryColor, width: 2),
         borderRadius: BorderRadius.circular(12),
       ),
       border: OutlineInputBorder(
@@ -99,7 +99,7 @@ class AppThemes {
     ),
     inputDecorationTheme: InputDecorationTheme(
       focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: primaryColor),
+        borderSide: BorderSide(color: secondaryColor, width: 2),
         borderRadius: BorderRadius.circular(12),
       ),
       border: OutlineInputBorder(
