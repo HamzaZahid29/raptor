@@ -4,7 +4,6 @@ import 'package:raptor/features/auth/domain/entity/user.dart';
 import 'package:raptor/features/auth/domain/usecases/user_sign_up.dart';
 
 part 'auth_event.dart';
-
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {

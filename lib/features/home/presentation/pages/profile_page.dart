@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../layout/models/user.dart';
-
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key, required this.user});
-
-  final User user;
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -23,14 +19,14 @@ class ProfilePage extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           Text(
-            user.name,
+            'user.name',
             style: const TextStyle(
               fontSize: 28,
               fontWeight: FontWeight.bold,
             ),
           ),
           const SizedBox(height: 10),
-          Text(user.email),
+          Text('d'),
         ],
       ),
     ),
