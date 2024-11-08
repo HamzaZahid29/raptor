@@ -4,6 +4,7 @@ import 'package:raptor/features/auth/data/datasources/auth_firebase_data_source.
 import 'package:raptor/features/auth/domain/repository/auth_repository.dart';
 import 'package:raptor/features/auth/domain/usecases/user_sign_up.dart';
 import 'package:raptor/features/auth/presentation/blocs/auth_bloc.dart';
+
 import 'features/auth/data/repositories/auth_repository_impl.dart';
 
 final serviceLocator = GetIt.instance;

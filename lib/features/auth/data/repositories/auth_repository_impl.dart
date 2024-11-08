@@ -3,7 +3,6 @@ import 'package:fpdart/fpdart.dart';
 import 'package:raptor/core/errors/exceptions.dart';
 import 'package:raptor/core/errors/failures.dart';
 import 'package:raptor/features/auth/data/datasources/auth_firebase_data_source.dart';
-import 'package:raptor/features/auth/data/models/user_model.dart';
 import 'package:raptor/features/auth/domain/entity/user.dart';
 
 import '../../domain/repository/auth_repository.dart';
