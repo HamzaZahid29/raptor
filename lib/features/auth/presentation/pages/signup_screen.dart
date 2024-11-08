@@ -22,7 +22,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     emailController.dispose();
     passwordController.dispose();
     userNameController.dispose();
@@ -33,11 +32,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:
-          AppBar(title: Text('SignUp', style: AppTextStyles.headlineMedium)),
+          AppBar(title: Text('Sign Up', style: AppTextStyles.headlineMedium)),
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is AuthFailure) {
             showSnackbar(context, state.messege);
+          } else if (state is AuthSuccess) {
+            showSnackbar(context, "User Created Successfully!");
           }
         },
         builder: (context, state) {
@@ -62,24 +63,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         formFieldValidator:
                             TextFieldValidators.userNameValidator,
                       ),
-                      const SizedBox(
-                        height: 10,
-                      ),
+                      const SizedBox(height: 10),
                       AuthTextFormField(
                         textEditingController: emailController,
                         label: 'Email',
                         formFieldValidator: TextFieldValidators.emailValidator,
                       ),
-                      const SizedBox(
-                        height: 10,
-                      ),
+                      const SizedBox(height: 10),
                       AuthTextFormField(
                         textEditingController: passwordController,
                         label: 'Password',
                         formFieldValidator:
                             TextFieldValidators.passwordValidator,
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Row(
                         children: [
                           Expanded(
@@ -87,23 +84,29 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
                                   context.read<AuthBloc>().add(AuthSignUp(
-                                      email: emailController.text.trim(),
-                                      password: passwordController.text.trim(),
-                                      name: userNameController.text.trim()));
+                                        email: emailController.text.trim(),
+                                        password:
+                                            passwordController.text.trim(),
+                                        name: userNameController.text.trim(),
+                                      ));
                                 }
                               },
-                              child: Text('SignUp',
+                              child: Text('Sign Up',
                                   style: AppTextStyles.labelLarge),
                             ),
                           ),
                         ],
-                      )
+                      ),
                     ],
                   ),
                 ),
               ),
             );
-          }else{
+          } else if (state is AuthSuccess) {
+            return Center(
+              child: Text('User created Successfully'),
+            );
+          } else {
             return SizedBox();
           }
         },
