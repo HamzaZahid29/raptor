@@ -5,7 +5,10 @@ import 'package:raptor/features/auth/presentation/pages/login_screen.dart';
 import 'package:raptor/features/auth/presentation/pages/signup_screen.dart';
 import 'package:raptor/features/home/layout/models/user.dart';
 
+import '../../features/auth/domain/entity/user.dart';
 import '../../features/home/layout/layout_scaffold.dart';
+import '../../features/home/layout/models/user.dart';
+import '../../features/home/layout/models/user.dart';
 import '../../features/home/presentation/pages/explore_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/home/presentation/pages/profile_page.dart';
@@ -17,8 +20,12 @@ final router = GoRouter(
   navigatorKey: _rootNavigatorKey,
   initialLocation: Routes.signupScreen,
   routes: [
-    GoRoute(path: Routes.loginScreen, pageBuilder: (context , state) => MaterialPage(child: LoginScreen())),
-    GoRoute(path: Routes.signupScreen, pageBuilder: (context , state) => MaterialPage(child: SignUpScreen())),
+    GoRoute(
+        path: Routes.loginScreen,
+        pageBuilder: (context, state) => MaterialPage(child: LoginScreen())),
+    GoRoute(
+        path: Routes.signupScreen,
+        pageBuilder: (context, state) => MaterialPage(child: SignUpScreen())),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) => LayoutScaffold(
         navigationShell: navigationShell,
@@ -47,10 +54,8 @@ final router = GoRouter(
               builder: (context, state) => const SettingsPage(),
               routes: [
                 GoRoute(
-                    path: Routes.profilePage,
-                    builder: (context, state) => ProfilePage(
-                      user: state.extra.  ,
-                    )
+                  path: Routes.profilePage,
+                  builder: (context, state) => const ProfilePage(),
                 ),
               ],
             ),
