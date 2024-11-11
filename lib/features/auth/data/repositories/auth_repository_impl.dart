@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart' as fire;
 import 'package:fpdart/fpdart.dart';
 import 'package:raptor/core/errors/exceptions.dart';
 import 'package:raptor/core/errors/failures.dart';
@@ -33,6 +34,8 @@ class AuthRepositoryImpl implements AuthRepository {
       return right(user);
     } on ServerException catch (e) {
       return left(Failure(e.message));
+    }  on fire.FirebaseAuthException catch (e) {
+      return left(Failure(e.toString()));
     }
   }
 }
