@@ -6,6 +6,7 @@ import 'package:raptor/features/auth/domain/usecases/user_sign_up.dart';
 import 'package:raptor/features/auth/presentation/blocs/auth_bloc.dart';
 
 import 'features/auth/data/repositories/auth_repository_impl.dart';
+import 'features/auth/domain/usecases/user_login.dart';
 
 final serviceLocator = GetIt.instance;
 
@@ -30,7 +31,12 @@ void _initAuth() {
       serviceLocator<AuthRepository>(),
     ),
   );
+  serviceLocator.registerFactory(
+    () => UserLogin(
+      serviceLocator<AuthRepository>(),
+    ),
+  );
   serviceLocator.registerLazySingleton(
-    () => AuthBloc(userSignUp: serviceLocator<UserSignUp>()),
+    () => AuthBloc(userSignUp: serviceLocator<UserSignUp>(), userLogin:serviceLocator<UserLogin>()),
   );
 }
