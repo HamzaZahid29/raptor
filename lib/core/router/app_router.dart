@@ -21,7 +21,7 @@ final router = GoRouter(
         path: Routes.loginScreen,
         pageBuilder: (context, state) => MaterialPage(child: LoginScreen())),
     GoRoute(
-      name: Routes.signupScreen,
+        name: Routes.signupScreen,
         path: Routes.signupScreen,
         pageBuilder: (context, state) => MaterialPage(child: SignUpScreen())),
     StatefulShellRoute.indexedStack(
