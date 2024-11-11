@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:raptor/core/router/static_app_routes.dart';
+import 'package:raptor/core/theme/theme.dart';
 import 'package:raptor/core/utils/show_snackbar.dart';
 import 'package:raptor/core/validators/text_field_validators.dart';
 
@@ -90,16 +91,17 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ],
                       ),
+                      SizedBox(height: 5,),
                       RichText(
                         textAlign: TextAlign.center,
                         text: TextSpan(
                             text: '''Don't have an account ? ''',
-                            style: AppTextStyles.headlineMedium,
+                            style: AppTextStyles.labelLarge,
                             children: [
                               TextSpan(
                                   text: '''Sign Up''',
-                                  style: AppTextStyles.headlineLarge
-                                      .copyWith(color: Colors.red),
+                                  style: AppTextStyles.labelLarge
+                                      .copyWith(color: AppThemes.secondaryColor),
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {
                                       // Get.toNamed(AppRoutes.signUpScreen);
