@@ -1,4 +1,3 @@
-
 import 'package:fpdart/fpdart.dart';
 import 'package:raptor/core/errors/exceptions.dart';
 import 'package:raptor/core/errors/failures.dart';
@@ -7,28 +6,33 @@ import 'package:raptor/features/auth/domain/entity/user.dart';
 
 import '../../domain/repository/auth_repository.dart';
 
-class AuthRepositoryImpl implements AuthRepository{
+class AuthRepositoryImpl implements AuthRepository {
   final AuthFirebaseDataSource remoteDataSource;
 
   AuthRepositoryImpl(this.remoteDataSource);
 
   @override
-  Future<Either<Failure, User>> loginWithEmailPassword({required String email, required String password}) async{
-    return await _returnUser(()=> remoteDataSource.loginWithEmailPassword(email: email, password: password));
+  Future<Either<Failure, User>> loginWithEmailPassword(
+      {required String email, required String password}) async {
+    return await _returnUser(() => remoteDataSource.loginWithEmailPassword(
+        email: email, password: password));
   }
 
   @override
-  Future<Either<Failure, User>> signUpWithEmailPassword({required String name, required String email, required String password}) async{
-    return await _returnUser(()=> remoteDataSource.signUpWithEmailPassword(email: email, password: password, name: name));
+  Future<Either<Failure, User>> signUpWithEmailPassword(
+      {required String name,
+      required String email,
+      required String password}) async {
+    return await _returnUser(() => remoteDataSource.signUpWithEmailPassword(
+        email: email, password: password, name: name));
   }
 
-  Future<Either<Failure, User>> _returnUser(Future<User> Function() fn) async{
-    try{
+  Future<Either<Failure, User>> _returnUser(Future<User> Function() fn) async {
+    try {
       final user = await fn();
       return right(user);
-    }on ServerException catch (e){
+    } on ServerException catch (e) {
       return left(Failure(e.message));
     }
   }
-  
 }
