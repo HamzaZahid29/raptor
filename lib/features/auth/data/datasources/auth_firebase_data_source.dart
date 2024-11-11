@@ -23,23 +23,40 @@ class AuthFirebaseDataSourceImpl extends AuthFirebaseDataSource {
   @override
   Future<UserModel> loginWithEmailPassword(
       {required String email, required String password}) async {
-    throw UnimplementedError();
+    try {
+      await firebaseAuth.signInWithEmailAndPassword(
+          email: email, password: password);
+      if (firebaseAuth.currentUser == null) {
+        throw ServerException('User is null');
+      }
+      return UserModel(
+          firebaseAuth.currentUser?.uid ?? '',
+          firebaseAuth.currentUser?.email ?? '',
+          firebaseAuth.currentUser?.displayName ?? '');
+    } catch (e) {
+      throw ServerException(e.toString());
+    }
   }
 
   @override
-  Future<UserModel> signUpWithEmailPassword(
-      { required String email,
-        required String password,
-        required String name,}) async {
+  Future<UserModel> signUpWithEmailPassword({
+    required String email,
+    required String password,
+    required String name,
+  }) async {
     try {
-      await firebaseAuth.createUserWithEmailAndPassword(
-          email: email, password: password).then((value) async{
-         await firebaseAuth.currentUser?.updateDisplayName(name);
+      await firebaseAuth
+          .createUserWithEmailAndPassword(email: email, password: password)
+          .then((value) async {
+        await firebaseAuth.currentUser?.updateDisplayName(name);
       });
-      if(firebaseAuth.currentUser == null){
+      if (firebaseAuth.currentUser == null) {
         throw ServerException('User is null');
       }
-      return UserModel(firebaseAuth.currentUser?.uid ?? '',firebaseAuth.currentUser?.email ?? '', firebaseAuth.currentUser?.displayName ?? '');
+      return UserModel(
+          firebaseAuth.currentUser?.uid ?? '',
+          firebaseAuth.currentUser?.email ?? '',
+          firebaseAuth.currentUser?.displayName ?? '');
     } catch (e) {
       throw ServerException(e.toString());
     }
