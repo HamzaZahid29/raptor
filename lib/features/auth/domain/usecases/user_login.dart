@@ -18,5 +18,5 @@ class UserLoginParams{
   final String email;
   final String password;
 
-  UserLoginParams(this.email, this.password);
+  UserLoginParams({required this.email ,required this.password});
 }
