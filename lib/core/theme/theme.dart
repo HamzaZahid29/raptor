@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppThemes {
   static final Color primaryColor = Color(0xFF182a3a);
-  static final Color accentColor = Color(0xFFf48c06);  // Bright contrasting accent color
-  static final Color secondaryColor = Color(0xFF72818d);  // Complementary secondary color
+  static final Color accentColor = Color(0xFFf48c06);
+  static final Color secondaryColor = Color(0xFF72818d);
 
   // Light Theme
   static final ThemeData lightTheme = ThemeData(
@@ -22,7 +22,7 @@ class AppThemes {
     textTheme: GoogleFonts.poppinsTextTheme(
       ThemeData.light().textTheme,
     ).apply(
-      bodyColor: Colors.black, // Text color for light theme
+      bodyColor: Colors.black,
       displayColor: Colors.black,
     ),
     primaryTextTheme: GoogleFonts.poppinsTextTheme(
@@ -36,13 +36,20 @@ class AppThemes {
         foregroundColor: Colors.white,
         backgroundColor: primaryColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        textStyle: const TextStyle(fontSize: 16),
+        textStyle: GoogleFonts.poppins(fontSize: 16),
       ),
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         foregroundColor: accentColor,
-        textStyle: const TextStyle(fontSize: 16),
+        textStyle: GoogleFonts.poppins(fontSize: 16),
+      ),
+    ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        foregroundColor: primaryColor,
+        side: BorderSide(color: primaryColor),
+        textStyle: GoogleFonts.poppins(fontSize: 16),
       ),
     ),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
@@ -58,6 +65,7 @@ class AppThemes {
         borderRadius: BorderRadius.circular(12),
         borderSide: BorderSide(color: secondaryColor),
       ),
+      hintStyle: GoogleFonts.poppins(color: secondaryColor),
     ),
     colorScheme: ColorScheme.light(
       primary: primaryColor,
@@ -97,7 +105,7 @@ class AppThemes {
     textTheme: GoogleFonts.poppinsTextTheme(
       ThemeData.dark().textTheme,
     ).apply(
-      bodyColor: Colors.white, // Text color for dark theme
+      bodyColor: Colors.white,
       displayColor: Colors.white,
     ),
     primaryTextTheme: GoogleFonts.poppinsTextTheme(
@@ -111,13 +119,20 @@ class AppThemes {
         foregroundColor: Colors.white,
         backgroundColor: primaryColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        textStyle: const TextStyle(fontSize: 16),
+        textStyle: GoogleFonts.poppins(fontSize: 16),
       ),
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         foregroundColor: accentColor,
-        textStyle: const TextStyle(fontSize: 16),
+        textStyle: GoogleFonts.poppins(fontSize: 16),
+      ),
+    ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        foregroundColor: accentColor,
+        side: BorderSide(color: accentColor),
+        textStyle: GoogleFonts.poppins(fontSize: 16),
       ),
     ),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
@@ -133,6 +148,7 @@ class AppThemes {
         borderRadius: BorderRadius.circular(12),
         borderSide: BorderSide(color: secondaryColor),
       ),
+      hintStyle: GoogleFonts.poppins(color: secondaryColor),
     ),
     colorScheme: ColorScheme.dark(
       primary: primaryColor,
