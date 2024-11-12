@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppThemes {
   static final Color primaryColor = Color(0xFF182a3a);
@@ -14,7 +15,7 @@ class AppThemes {
     appBarTheme: AppBarTheme(
       backgroundColor: primaryColor,
       iconTheme: const IconThemeData(color: Colors.white),
-      titleTextStyle: const TextStyle(color: Colors.white, fontSize: 20),
+      titleTextStyle:  GoogleFonts.poppins().copyWith(color: Colors.white, fontSize: 20),
       actionsIconTheme: IconThemeData(color: accentColor),  // Accent color for icons in AppBar
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -76,7 +77,7 @@ class AppThemes {
     appBarTheme: AppBarTheme(
       backgroundColor: primaryColor,
       iconTheme: const IconThemeData(color: Colors.white),
-      titleTextStyle: const TextStyle(color: Colors.white, fontSize: 20),
+      titleTextStyle:  GoogleFonts.poppins().copyWith(color: Colors.white, fontSize: 20),
       actionsIconTheme: IconThemeData(color: accentColor),  // Accent color for icons in AppBar
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(

@@ -33,7 +33,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:
-          AppBar(title: Text('Sign Up', style: AppTextStyles.headlineMedium)),
+          AppBar(title: Text('Sign Up', style: AppTextStyles.headlineMedium(context))),
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is AuthFailure) {
@@ -93,7 +93,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 }
                               },
                               child: Text('Sign Up',
-                                  style: AppTextStyles.labelLarge),
+                                  style: AppTextStyles.labelLarge(context)),
                             ),
                           ),
                         ],

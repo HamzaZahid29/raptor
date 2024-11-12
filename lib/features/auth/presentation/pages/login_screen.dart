@@ -34,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:
-          AppBar(title: Text('Login', style: AppTextStyles.headlineMedium)),
+          AppBar(title: Text('Login', style: AppTextStyles.headlineMedium(context))),
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is AuthFailure) {
@@ -86,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 }
                               },
                               child: Text('Login',
-                                  style: AppTextStyles.labelLarge),
+                                  style: AppTextStyles.labelLarge(context)),
                             ),
                           ),
                         ],
@@ -96,12 +96,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         textAlign: TextAlign.center,
                         text: TextSpan(
                             text: '''Don't have an account ? ''',
-                            style: AppTextStyles.labelLarge,
+                            style: AppTextStyles.labelLarge(context),
                             children: [
                               TextSpan(
                                   text: '''Sign Up''',
-                                  style: AppTextStyles.labelLarge
-                                      .copyWith(color: AppThemes.secondaryColor),
+                                  style: AppTextStyles.labelLarge(context),
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {
                                       // Get.toNamed(AppRoutes.signUpScreen);
