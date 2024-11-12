@@ -10,30 +10,43 @@ class AppThemes {
   static final ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     primaryColor: primaryColor,
-    hintColor: accentColor,  // Accent color
+    hintColor: accentColor,
     scaffoldBackgroundColor: Colors.white,
     appBarTheme: AppBarTheme(
+      foregroundColor: Colors.white,
       backgroundColor: primaryColor,
       iconTheme: const IconThemeData(color: Colors.white),
-      titleTextStyle:  GoogleFonts.poppins().copyWith(color: Colors.white, fontSize: 20),
-      actionsIconTheme: IconThemeData(color: accentColor),  // Accent color for icons in AppBar
+      titleTextStyle: GoogleFonts.poppins(color: Colors.white, fontSize: 20),
+      actionsIconTheme: IconThemeData(color: accentColor),
+    ),
+    textTheme: GoogleFonts.poppinsTextTheme(
+      ThemeData.light().textTheme,
+    ).apply(
+      bodyColor: Colors.black, // Text color for light theme
+      displayColor: Colors.black,
+    ),
+    primaryTextTheme: GoogleFonts.poppinsTextTheme(
+      ThemeData.light().primaryTextTheme,
+    ).apply(
+      bodyColor: Colors.white,
+      displayColor: Colors.white,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         foregroundColor: Colors.white,
-        backgroundColor: primaryColor,  // Button background color
+        backgroundColor: primaryColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         textStyle: const TextStyle(fontSize: 16),
       ),
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
-        foregroundColor: accentColor,  // TextButton text color
+        foregroundColor: accentColor,
         textStyle: const TextStyle(fontSize: 16),
       ),
     ),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: accentColor,  // Floating action button uses accent color
+      backgroundColor: accentColor,
       foregroundColor: Colors.white,
     ),
     inputDecorationTheme: InputDecorationTheme(
@@ -48,9 +61,9 @@ class AppThemes {
     ),
     colorScheme: ColorScheme.light(
       primary: primaryColor,
-      secondary: secondaryColor,  // Secondary color for additional contrast
-      onPrimary: Colors.white,  // Text color on primary
-      onSecondary: Colors.white,  // Text color on secondary
+      secondary: secondaryColor,
+      onPrimary: Colors.white,
+      onSecondary: Colors.white,
       onSurface: Colors.black,
       onBackground: Colors.black,
       surface: Colors.white,
@@ -75,10 +88,23 @@ class AppThemes {
     hintColor: accentColor,
     scaffoldBackgroundColor: Colors.black,
     appBarTheme: AppBarTheme(
+      foregroundColor: Colors.white,
       backgroundColor: primaryColor,
       iconTheme: const IconThemeData(color: Colors.white),
-      titleTextStyle:  GoogleFonts.poppins().copyWith(color: Colors.white, fontSize: 20),
-      actionsIconTheme: IconThemeData(color: accentColor),  // Accent color for icons in AppBar
+      titleTextStyle: GoogleFonts.poppins(color: Colors.white, fontSize: 20),
+      actionsIconTheme: IconThemeData(color: accentColor),
+    ),
+    textTheme: GoogleFonts.poppinsTextTheme(
+      ThemeData.dark().textTheme,
+    ).apply(
+      bodyColor: Colors.white, // Text color for dark theme
+      displayColor: Colors.white,
+    ),
+    primaryTextTheme: GoogleFonts.poppinsTextTheme(
+      ThemeData.dark().primaryTextTheme,
+    ).apply(
+      bodyColor: Colors.white,
+      displayColor: Colors.white,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
@@ -90,12 +116,12 @@ class AppThemes {
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
-        foregroundColor: accentColor,  // TextButton text color
+        foregroundColor: accentColor,
         textStyle: const TextStyle(fontSize: 16),
       ),
     ),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: accentColor,  // Accent color for floating button
+      backgroundColor: accentColor,
       foregroundColor: Colors.black,
     ),
     inputDecorationTheme: InputDecorationTheme(
