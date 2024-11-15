@@ -1,8 +1,9 @@
 import 'package:fpdart/src/either.dart';
 import 'package:raptor/core/errors/failures.dart';
 import 'package:raptor/core/usecase/usecase.dart';
-import 'package:raptor/features/auth/domain/entity/user.dart';
 import 'package:raptor/features/auth/domain/repository/auth_repository.dart';
+
+import '../../../../core/common/entity/user.dart';
 
 class UserSignUp implements UseCase<User, UserSignUpParams>{
   final AuthRepository authRepository;

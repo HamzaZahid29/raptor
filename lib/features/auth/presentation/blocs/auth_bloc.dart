@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raptor/core/usecase/usecase.dart';
-import 'package:raptor/features/auth/domain/entity/user.dart';
 import 'package:raptor/features/auth/domain/usecases/current_user.dart';
 import 'package:raptor/features/auth/domain/usecases/user_login.dart';
 import 'package:raptor/features/auth/domain/usecases/user_sign_up.dart';
+
+import '../../../../core/common/entity/user.dart';
 
 part 'auth_event.dart';
 
