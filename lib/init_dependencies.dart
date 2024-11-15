@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:raptor/features/auth/data/datasources/auth_firebase_data_source.dart';
 import 'package:raptor/features/auth/domain/repository/auth_repository.dart';
+import 'package:raptor/features/auth/domain/usecases/current_user.dart';
 import 'package:raptor/features/auth/domain/usecases/user_sign_up.dart';
 import 'package:raptor/features/auth/presentation/blocs/auth_bloc.dart';
 
@@ -36,7 +37,15 @@ void _initAuth() {
       serviceLocator<AuthRepository>(),
     ),
   );
+  serviceLocator.registerFactory(
+    () => CurrentUser(
+      serviceLocator<AuthRepository>(),
+    ),
+  );
   serviceLocator.registerLazySingleton(
-    () => AuthBloc(userSignUp: serviceLocator<UserSignUp>(), userLogin:serviceLocator<UserLogin>()),
+    () => AuthBloc(
+        userSignUp: serviceLocator<UserSignUp>(),
+        userLogin: serviceLocator<UserLogin>(),
+        currentUser: serviceLocator<CurrentUser>()),
   );
 }
