@@ -15,8 +15,8 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<Either<Failure, User>> loginWithEmailPassword(
       {required String email, required String password}) async {
-    return await _returnUser(() async => remoteDataSource.loginWithEmailPassword(
-        email: email, password: password));
+    return await _returnUser(() async => remoteDataSource
+        .loginWithEmailPassword(email: email, password: password));
   }
 
   @override
@@ -24,8 +24,23 @@ class AuthRepositoryImpl implements AuthRepository {
       {required String name,
       required String email,
       required String password}) async {
-    return await _returnUser(() async => remoteDataSource.signUpWithEmailPassword(
-        email: email, password: password, name: name));
+    return await _returnUser(() async => remoteDataSource
+        .signUpWithEmailPassword(email: email, password: password, name: name));
+  }
+
+  @override
+  Future<Either<Failure, User>> currentUser() async {
+    try{
+        final user = await remoteDataSource.getCurrentUser();
+        if(user == null){
+          return left(Failure('User not logged in'));
+        }else{
+          return right(user);
+        }
+    }on ServerException catch (e){
+      return left(Failure(e.toString()));
+    }
+
   }
 
   Future<Either<Failure, User>> _returnUser(Future<User> Function() fn) async {
@@ -34,7 +49,7 @@ class AuthRepositoryImpl implements AuthRepository {
       return right(user);
     } on ServerException catch (e) {
       return left(Failure(e.message));
-    }  on fire.FirebaseAuthException catch (e) {
+    } on fire.FirebaseAuthException catch (e) {
       return left(Failure(e.toString()));
     }
   }

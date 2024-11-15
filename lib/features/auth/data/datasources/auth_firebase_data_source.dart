@@ -13,6 +13,8 @@ abstract interface class AuthFirebaseDataSource {
     required String email,
     required String password,
   });
+
+  Future<UserModel?> getCurrentUser();
 }
 
 class AuthFirebaseDataSourceImpl extends AuthFirebaseDataSource {
@@ -57,6 +59,22 @@ class AuthFirebaseDataSourceImpl extends AuthFirebaseDataSource {
           firebaseAuth.currentUser?.uid ?? '',
           firebaseAuth.currentUser?.email ?? '',
           firebaseAuth.currentUser?.displayName ?? '');
+    } catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
+
+  @override
+  Future<UserModel?> getCurrentUser() async {
+    try {
+      if (firebaseAuth.currentUser == null) {
+        return null;
+      } else {
+        return UserModel(
+            firebaseAuth.currentUser?.uid ?? '',
+            firebaseAuth.currentUser?.email ?? '',
+            firebaseAuth.currentUser?.displayName ?? '');
+      }
     } catch (e) {
       throw ServerException(e.toString());
     }
