@@ -34,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:
-          AppBar(title: Text('Login', style: AppTextStyles.headlineMedium(context))),
+          AppBar(title: Text('Login')),
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is AuthFailure) {
@@ -85,8 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       ));
                                 }
                               },
-                              child: Text('Login',
-                                  style: AppTextStyles.labelLarge(context)),
+                              child: Text('Login',),
                             ),
                           ),
                         ],
